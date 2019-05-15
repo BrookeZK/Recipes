@@ -1,0 +1,14 @@
+<div class="text-center">
+    <h1 class="display-4">Ingredients</h1>
+    <ul>
+      @if (@Model.Count == 0)
+      {
+        <h2>Currently there are no ingredients.</h2>
+      }
+      @foreach (Ingredient ingredient in Model)
+      {
+        <li><a href="ingredients/@ingredient.id">@ingredient.name</a></li>
+      }
+    </ul>
+    <a href="ingredients/new">Add an ingredient!</a>
+</div>

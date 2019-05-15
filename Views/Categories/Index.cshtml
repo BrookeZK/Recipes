@@ -1,0 +1,14 @@
+<div class="text-center">
+    <h1 class="display-4">Food Categories</h1>
+    <ul>
+      @if (@Model.Count == 0)
+      {
+        <h2>Currently there are no categories.</h2>
+      }
+      @foreach (Category category in Model)
+      {
+        <li><a href="categories/@category.id">@category.name</a></li>
+      }
+    </ul>
+    <a href="categories/new">Add a food category!</a>
+</div>
