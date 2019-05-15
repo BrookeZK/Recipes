@@ -3,4 +3,7 @@
     <h2>@Model.description</h2>
 
     <a class="btn btn-dark" href="recipes/new">Add a new recipe!</a>
+    <form action="/ingredients/@Model.id/delete" method="post" >
+      <button type="submit" class="btn btn-dark">Delete this ingredient</button>
+    </form>
 </div>

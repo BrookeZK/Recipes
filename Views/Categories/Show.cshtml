@@ -2,4 +2,7 @@
     <h1 class="display-4">@Model.name</h1>
 
     <a class="btn btn-dark" href="categories/new">Add a new food category!</a>
+    <form action="/categories/@Model.id/delete" method="post" >
+      <button type="submit" class="btn btn-dark">Delete this category</button>
+    </form>
 </div>

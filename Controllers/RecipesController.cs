@@ -40,5 +40,15 @@ namespace Recipes.Controllers
             return View(db.recipes.Find(id));
         }
 
+        [HttpPost("/recipes/{id}/delete")]
+        public IActionResult DeleteRecipe(int id)
+        {
+            var db = new RecipeContext();
+            var recipe = db.recipes.Find(id);
+            db.recipes.Remove(recipe);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
