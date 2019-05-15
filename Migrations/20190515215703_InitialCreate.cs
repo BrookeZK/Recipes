@@ -34,6 +34,21 @@ namespace Recipes.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "join",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    recipe_id = table.Column<int>(nullable: false),
+                    category_id = table.Column<int>(nullable: false),
+                    ingredient_id = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_join", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "recipes",
                 columns: table => new
                 {
@@ -55,6 +70,9 @@ namespace Recipes.Migrations
 
             migrationBuilder.DropTable(
                 name: "ingredients");
+
+            migrationBuilder.DropTable(
+                name: "join");
 
             migrationBuilder.DropTable(
                 name: "recipes");

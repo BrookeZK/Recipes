@@ -2,8 +2,9 @@
     <h1 class="display-4">@Model.name</h1>
     <h2>@Model.description</h2>
 
-    <a class="btn btn-dark" href="recipes/new">Add a new recipe!</a>
-    <form action="/ingredients/@Model.id/delete" method="post" >
+    <a class="btn btn-dark" href="/ingredients/new">Add a new ingredient!</a><br><br>
+    <a class="btn btn-dark" href="@Model.id/edit">Edit ingredient</a><br><br>
+    <form action="@Model.id/delete" method="post">
       <button type="submit" class="btn btn-dark">Delete this ingredient</button>
-    </form>
+    </form><br>
 </div>

@@ -1,8 +1,16 @@
+@using Recipes.Models;
 <div class="text-center">
     <h1 class="display-4">Food Categories: New</h1>
     <form action="/categories" method="post" >
       <label for="categoryName">Category Name:</label>
       <input type="text" name="categoryName">
+      <select id='recipeId' name='recipeId' type='text'>
+        <option value = 0>None</option>
+        @foreach (var recipe in @Model)
+        {
+          <option value='@recipe.id'>@recipe.name</option>
+        }
+      </select><br><br>
       <button type="submit" class="btn btn-dark">Add Category</button>
     </form>
 </div>

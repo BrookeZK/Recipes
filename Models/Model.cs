@@ -10,6 +10,7 @@ namespace Recipes.Models
     public DbSet<Recipe> recipes { get; set; }
     public DbSet<Category> categories { get; set; }
     public DbSet<Ingredient> ingredients { get; set; }
+    public DbSet<Join> join { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

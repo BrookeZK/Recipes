@@ -8,7 +8,7 @@ using Recipes.Models;
 namespace Recipes.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    [Migration("20190515172336_InitialCreate")]
+    [Migration("20190515215703_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,22 @@ namespace Recipes.Migrations
                     b.HasKey("id");
 
                     b.ToTable("ingredients");
+                });
+
+            modelBuilder.Entity("Recipes.Models.Join", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("category_id");
+
+                    b.Property<int>("ingredient_id");
+
+                    b.Property<int>("recipe_id");
+
+                    b.HasKey("id");
+
+                    b.ToTable("join");
                 });
 
             modelBuilder.Entity("Recipes.Models.Recipe", b =>

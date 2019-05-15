@@ -1,12 +1,10 @@
-@using Recipes.Models;
-
 <div class="text-center">
-    <h1 class="display-4">Recipes: New</h1>
-    <form action="/recipes" method="post" >
+    <h1 class="display-4">Edit @Model.name</h1>
+    <form action="/recipes/@Model.id" method="post" >
       <label for="recipeName">Recipe Name:</label><br>
-      <input type="text" name="recipeName"><br>
+      <input type="text" name="recipeName" value='@Model.name'><br>
       <label for="recipeInstructions">Recipe Instructions:</label><br>
-      <textarea rows="5" cols="80" type="text" name="recipeInstructions" autofocus="autofocus"></textarea><br>
+      <textarea rows="5" cols="80" type="text" name="recipeInstructions" autofocus="autofocus">@Model.instructions</textarea><br>
       <select id='categoryId' name='categoryId' type='text'>
         <option value = 0>None</option>
         @foreach (var category in @Model)
@@ -14,8 +12,6 @@
           <option value='@category.id'>@category.name</option>
         }
       </select><br><br>
-
-      <button type="submit" class="btn btn-dark">Add Recipe</button>
-
+      <button type="submit" class="btn btn-dark">Saves Changes</button>
     </form>
 </div>

@@ -41,6 +41,22 @@ namespace Recipes.Migrations
                     b.ToTable("ingredients");
                 });
 
+            modelBuilder.Entity("Recipes.Models.Join", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("category_id");
+
+                    b.Property<int>("ingredient_id");
+
+                    b.Property<int>("recipe_id");
+
+                    b.HasKey("id");
+
+                    b.ToTable("join");
+                });
+
             modelBuilder.Entity("Recipes.Models.Recipe", b =>
                 {
                     b.Property<int>("id")

@@ -1,8 +1,19 @@
+@using Recipes.Models;
+
 <div class="text-center">
     <h1 class="display-4">@Model.name</h1>
-    <h2>Instructions: @Model.instructions</h2>
+    <h2>Category:</h2>
+    <ul>
+      @foreach(Category category in @Model.ShowCategories())
+      {
+        <li><a href='/categories/@category.id'>@category.name</a></li>
+      }
+    </ul>
+    <h2>Instructions:</h2>
+    <h3>@Model.instructions</h3>
 
-    <a class="btn btn-dark" href="recipes/new">Add a new recipe!</a>
+    <a class="btn btn-dark" href="/recipes/new">Add a new recipe!</a><br><br>
+    <a class="btn btn-dark" href="@Model.id/edit">Edit recipe</a><br><br>
     <form action="/recipes/@Model.id/delete" method="post" >
       <button type="submit" class="btn btn-dark">Delete this recipe</button>
     </form>

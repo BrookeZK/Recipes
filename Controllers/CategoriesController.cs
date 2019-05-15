@@ -20,16 +20,22 @@ namespace Recipes.Controllers
         [HttpGet("/categories/new")]
         public IActionResult New()
         {
-            return View();
+            return View(new RecipeContext().recipes.ToList());
         }
 
         [HttpPost("/categories")]
-        public IActionResult Create(string categoryName)
+        public IActionResult Create(string categoryName, int recipeId)
         {
             var db = new RecipeContext();
             var category = new Category {name = categoryName};
             db.categories.Add(category);
             db.SaveChanges();
+            if (recipeId > 0)
+            {
+            var join = new Join {recipe_id = recipeId, category_id = category.id};
+            db.join.Add(join);
+            db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -50,6 +56,26 @@ namespace Recipes.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet("/categories/{id}/edit")]
+        public IActionResult Edit(int id)
+        {
+            var db = new RecipeContext();
+            var category = db.categories.Find(id);
+            return View(category);
+        }
+
+        [HttpPost("/categories/{id}")]
+        public IActionResult Update(int id, string categoryName)
+        {
+            var db = new RecipeContext();
+            var category = db.categories.Find(id);
+            if (categoryName != null)
+            {
+              category.name = categoryName;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Show", new {id = id});
+        }
 
     }
 }

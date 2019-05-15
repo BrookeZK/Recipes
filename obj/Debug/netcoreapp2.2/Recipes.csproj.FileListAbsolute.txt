@@ -37,3 +37,6 @@
 /Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Recipes/Index.g.cshtml.cs
 /Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Recipes/New.g.cshtml.cs
 /Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Recipes/Show.g.cshtml.cs
+/Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Ingredients/Edit.g.cshtml.cs
+/Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Categories/Edit.g.cshtml.cs
+/Users/Guest/Desktop/Recipes/obj/Debug/netcoreapp2.2/Razor/Views/Recipes/Edit.g.cshtml.cs

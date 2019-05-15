@@ -20,16 +20,22 @@ namespace Recipes.Controllers
         [HttpGet("/recipes/new")]
         public IActionResult New()
         {
-            return View();
+            return View(new RecipeContext().categories.ToList());
         }
 
         [HttpPost("/recipes")]
-        public IActionResult Create(string recipeName, string recipeInstructions)
+        public IActionResult Create(string recipeName, string recipeInstructions, int categoryId)
         {
             var db = new RecipeContext();
             var recipe = new Recipe {name = recipeName, instructions = recipeInstructions};
             db.recipes.Add(recipe);
             db.SaveChanges();
+            if(categoryId > 0)
+            {
+              var join = new Join {recipe_id = recipe.id, category_id = categoryId};
+              db.join.Add(join);
+              db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -48,6 +54,36 @@ namespace Recipes.Controllers
             db.recipes.Remove(recipe);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet("/recipes/{id}/edit")]
+        public IActionResult Edit(int id)
+        {
+            var db = new RecipeContext();
+            var recipe = db.recipes.Find(id);
+            return View(recipe);
+        }
+
+        [HttpPost("/recipes/{id}")]
+        public IActionResult Update(int id, string recipeName, string recipeInstructions, int categoryId)
+        {
+            var db = new RecipeContext();
+            var recipe = db.recipes.Find(id);
+            if (recipeName != null)
+            {
+              recipe.name = recipeName;
+            }
+            if (recipeInstructions != null)
+            {
+              recipe.instructions = recipeInstructions;
+            }
+            //var joinItem = db.join.Find(join.recipe_id == recipe.id);
+            // if (categoryId != joinItem.category_id)
+            // {
+            //   recipe. = recipeInstructions;
+            // }
+            db.SaveChanges();
+            return RedirectToAction("Show", new {id = id});
         }
 
     }
