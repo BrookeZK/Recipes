@@ -39,6 +39,13 @@ namespace Recipes.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost("/recipes/alphabet-asc")]
+        public IActionResult SortAsc()
+        {
+          var db = new RecipeContext();
+          return View("Index", db.recipes.OrderBy(j => j.name).ToList());
+        }
+
         [HttpGet("/recipes/{id}")]
         public IActionResult Show(int id)
         {
