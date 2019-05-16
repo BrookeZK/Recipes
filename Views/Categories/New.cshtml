@@ -4,6 +4,7 @@
     <form action="/categories" method="post" >
       <label for="categoryName">Category Name:</label>
       <input type="text" name="categoryName">
+      <label for="recipeId">Add a recipe to this category: </label>
       <select id='recipeId' name='recipeId' type='text'>
         <option value = 0>None</option>
         @foreach (var recipe in @Model)

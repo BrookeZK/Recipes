@@ -25,5 +25,10 @@ namespace Recipes.Models
       return theList;
     }
 
+    public static List<Category> GetAll()
+    {
+      return new RecipeContext().categories.ToList();
+    }
+
   }
 }

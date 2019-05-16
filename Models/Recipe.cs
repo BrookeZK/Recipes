@@ -29,5 +29,10 @@ namespace Recipes.Models
       }
       return theList;
     }
+  
+    public static List<Recipe> GetAll()
+    {
+      return new RecipeContext().recipes.ToList();
+    }
   }
 }

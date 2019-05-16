@@ -77,5 +77,34 @@ namespace Recipes.Controllers
             return RedirectToAction("Show", new {id = id});
         }
 
+        [HttpPost("/categories/{id}/add")]
+        public IActionResult AddRecipe(int id, int recipeId)
+        {
+            var db = new RecipeContext();
+            var category = db.categories.Find(id);
+            if (recipeId > 0)
+            {
+              var newJoin = new Join{recipe_id = recipeId, category_id = category.id};
+              db.join.Add(newJoin);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Show", new {id = id});
+        }
+
+        [HttpPost("/categories/{id}/delete-recipe")]
+        public IActionResult DeleteRecipe(int id, int recipeId)
+        {
+            var db = new RecipeContext();
+            var category = db.categories.Find(id);
+            if (recipeId > 0)
+            {
+              Join thisEntry = db.join.Where( j => j.category_id == id && j.recipe_id == recipeId).FirstOrDefault();
+
+              db.join.Remove(thisEntry);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Show", new {id = id});
+        }
+
     }
 }

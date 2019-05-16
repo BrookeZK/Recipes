@@ -7,7 +7,7 @@
       <textarea rows="5" cols="80" type="text" name="recipeInstructions" autofocus="autofocus">@Model.instructions</textarea><br>
       <select id='categoryId' name='categoryId' type='text'>
         <option value = 0>None</option>
-        @foreach (var category in @Model)
+        @foreach (var category in @Model.ShowCategories())
         {
           <option value='@category.id'>@category.name</option>
         }

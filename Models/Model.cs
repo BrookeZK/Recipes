@@ -16,6 +16,5 @@ namespace Recipes.Models
     {
       optionsBuilder.UseMySQL("server=localhost;database=recipes;user=root;password=root;port=8889;");
     }
-
   }
 }

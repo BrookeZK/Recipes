@@ -7,6 +7,7 @@
       <input type="text" name="recipeName"><br>
       <label for="recipeInstructions">Recipe Instructions:</label><br>
       <textarea rows="5" cols="80" type="text" name="recipeInstructions" autofocus="autofocus"></textarea><br>
+      <label for="categoryId">Add this recipe to a category:</label><br>
       <select id='categoryId' name='categoryId' type='text'>
         <option value = 0>None</option>
         @foreach (var category in @Model)

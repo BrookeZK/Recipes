@@ -3,12 +3,35 @@
 <div class="text-center">
     <h1 class="display-4">@Model.name</h1>
     <h2>Here is a list of recipes in this category:</h2>
+
     <ul>
       @foreach(Recipe recipe in @Model.ShowRecipes())
       {
         <li><a href='/recipes/@recipe.id'>@recipe.name</a></li>
       }
     </ul>
+
+    <form action="/categories/@Model.id/add" method="post" >
+      <button type="submit" class="btn btn-dark">ADD a recipe to this category:</button>
+      <select id='recipeId' name='recipeId' type='text'>
+        <option value = 0>None</option>
+        @foreach (var recipe in @Recipe.GetAll())
+        {
+          <option value='@recipe.id'>@recipe.name</option>
+        }
+      </select><br><br>
+    </form>
+
+    <form action="/categories/@Model.id/delete-recipe" method="post" >
+      <button type="submit" class="btn btn-dark">REMOVE a recipe from this category:</button>
+      <select id='recipeId' name='recipeId' type='text'>
+        <option value = 0>None</option>
+        @foreach (var recipe in @Model.ShowRecipes())
+        {
+          <option value='@recipe.id'>@recipe.name</option>
+        }
+      </select><br><br>
+    </form>
 
     <a class="btn btn-dark" href="/categories/new">Add a new food category!</a><br><br>
         <a class="btn btn-dark" href="@Model.id/edit">Edit category</a><br><br>
